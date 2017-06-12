@@ -29,3 +29,13 @@ supporter{
      width:145px; height: 300px;
 }
 
+policeman{
+     background-image: url(../images/policeman.png);
+     width:83px; height: 200px;
+}
+
+bottle{
+     background-image: url(../images/bottle.png);
+     width:13px; height: 50px;
+}
+

@@ -8,11 +8,17 @@ class Throwing implements SupporterBehavior{
         window.addEventListener("keyup", this.onKeyUp.bind(this));
 
         console.log("throwing")
+        for (var i = 0; i < this.supporter.observers.length; i++) {
+        this.supporter.observers[i].notify(1);
+        }
     }
     doStuff() {
         
         this.supporter.div.style.backgroundImage = "url('images/throwning.png')";
     }
+    private bottleMaker2000(){
+        this.supporter.bottles.push(new Bottle(this.supporter.x, this.supporter.y))
+ }
 
    onKeyDown(event:KeyboardEvent):void {
         
@@ -41,7 +47,7 @@ class Throwing implements SupporterBehavior{
             this.supporter.behavior = new Moving(this.supporter)
             break;
         case this.supporter.spaceKey:
-            this.supporter.behavior = new Throwing(this.supporter)
+           this.bottleMaker2000()
             break;
         case this.supporter.enterKey:
             this.supporter.behavior = new Drinking(this.supporter)

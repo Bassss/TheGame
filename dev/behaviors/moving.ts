@@ -9,15 +9,19 @@ class Moving implements SupporterBehavior{
    window.addEventListener("keydown", this.onKeyDown.bind(this));
         window.addEventListener("keyup", this.onKeyUp.bind(this));
 
-        console.log("moving")
+         for (var i = 0; i < this.supporter.observers.length; i++) {
+        this.supporter.observers[i].notify(0.1);
+         }
+    
     }
     
     doStuff():void {
-        
+     
         this.supporter.div.style.backgroundImage = "url('images/supporter.png')";
         //movings
         let targetX = this.supporter.x - this.supporter.leftSpeed + this.supporter.rightSpeed;
         if(targetX > 0 && targetX+100 < document.getElementById("container").clientWidth -50) this.supporter.x = targetX;
+
         this.supporter.div.style.transform = "translate("+this.supporter.x+"px, "+this.supporter.y+"px) scaleX(1)";
  
 
@@ -26,19 +30,19 @@ class Moving implements SupporterBehavior{
         
         switch(event.keyCode){
         case this.supporter.leftKey:
-        console.log("leftArrowKey")
+        // console.log("leftArrowKey")
             this.supporter.leftSpeed = 10;
             break;
         case this.supporter.rightKey:
-         console.log("rightArrowKey")
+        //  console.log("rightArrowKey")
             this.supporter.rightSpeed = 10;
             break;    
         case this.supporter.spaceKey:
-         console.log("spacebarKey")
+        //  console.log("spacebarKey")
             this.supporter.behavior = new Throwing(this.supporter) 
             break;
         case this.supporter.enterKey:
-         console.log("enterKey")
+        //  console.log("enterKey")
             this.supporter.behavior = new Drinking(this.supporter) 
             break;
         }

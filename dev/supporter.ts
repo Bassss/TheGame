@@ -1,8 +1,9 @@
 /// <reference path="gameObject.ts"/>
 
-class Supporter extends GameObject {
+class Supporter extends GameObject implements Subject{
 
-    public bottles:number;
+    public observers: Array<Observer> = new Array<Observer>();
+    public bottles: Array<Bottle> = new Array<Bottle>();
     private game:Game;
     public behavior: SupporterBehavior
 
@@ -26,17 +27,24 @@ class Supporter extends GameObject {
         this.spaceKey = 32;
         this.enterKey = 13;
 
-      
-    
-        
-        this.div.style.transform ="translate("+this.x+"px,"+this.y+"px)";
 
-    }
+         this.div.style.transform ="translate("+this.x+"px,"+this.y+"px)";
+         }
    
+   public subscribe(o : Observer){
+       this.observers.push(o);
+
+   }
+   public unsubscribe(o : Observer){
+       
+   }
 
 public update() : void {
    
-    //Behaviors
+   for (var i = 0; i < this.bottles.length; i++) {
+             this.bottles[i].update();
+        }
+    //Behaviors 
     this.behavior.doStuff()
  
     }
