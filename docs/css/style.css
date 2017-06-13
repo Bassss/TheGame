@@ -23,6 +23,11 @@ container {
     overflow:hidden;
 }
 
+score {
+    color:white;
+    font-size : 220px;
+    padding:20px;
+}
 
 supporter{
      background-image: url(../images/supporter.png);

@@ -1,57 +1,44 @@
-class Throwing implements SupporterBehavior{
+class Throwing implements SupporterBehavior {
     supporter: Supporter;
 
-    constructor(s : Supporter){
+    constructor(s: Supporter) {
         this.supporter = s;
 
-       window.addEventListener("keydown", this.onKeyDown.bind(this));
-        window.addEventListener("keyup", this.onKeyUp.bind(this));
 
         console.log("throwing")
         for (var i = 0; i < this.supporter.observers.length; i++) {
-        this.supporter.observers[i].notify(1);
+            this.supporter.observers[i].notify(Math.round(Math.random() * 1));
         }
     }
     doStuff() {
-        
+
         this.supporter.div.style.backgroundImage = "url('images/throwning.png')";
     }
-    private bottleMaker2000(){
-        this.supporter.bottles.push(new Bottle(this.supporter.x, this.supporter.y))
- }
-
-   onKeyDown(event:KeyboardEvent):void {
-        
-        switch(event.keyCode){
-        case this.supporter.leftKey:
-            console.log("leftArrowKey")
-            break;
-        case this.supporter.rightKey:
-            console.log("rightArrowKey")
-            break;
-        case this.supporter.spaceKey:
-            console.log("spacebarKey")
-            break;
-        case this.supporter.enterKey:
-            console.log("enterKey")
-            break;
+    private bottleMaker2000() {
+        if (this.supporter.ammo != 0) {
+            this.supporter.ammo -= 1;
+            console.log(this.supporter.ammo);
+            this.supporter.bottles.push(new FightObject.Bottle(this.supporter.x, this.supporter.y))
+        } else {
+            this.reload();
         }
-    }
 
-    onKeyUp(event:KeyboardEvent):void {
-        switch(event.keyCode){
-        case this.supporter.leftKey:
-            this.supporter.behavior = new Moving(this.supporter) 
-            break;
-        case this.supporter.rightKey:
-            this.supporter.behavior = new Moving(this.supporter)
-            break;
-        case this.supporter.spaceKey:
-           this.bottleMaker2000()
-            break;
-        case this.supporter.enterKey:
-            this.supporter.behavior = new Drinking(this.supporter)
-            break;
-        }
     }
+private reload(){
+    for(var i = 0; i< 5; i++){
+        this.supporter.ammo += 1;
+
+    }
+}
+onLeft(){
+ this.supporter.behavior = new Moving(this.supporter);
+}
+onRight(){
+this.supporter.behavior = new Moving(this.supporter);
+}
+onSpace(){
+ this.bottleMaker2000()
+}
+
+
 }
