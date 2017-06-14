@@ -1,7 +1,7 @@
 ### UML
 Onderstaand is een UML te vinden.
 
-![UML](Game UML.png?raw=true "UML")
+![UML](UML.png?raw=true "UML")
 
 
 hallo best code reviewer,
