@@ -1,4 +1,4 @@
-                        ### UML
+### UML
 Onderstaand is een UML te vinden.
 
 ![UML](Game UML.png?raw=true "UML")
