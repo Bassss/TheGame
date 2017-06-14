@@ -220,6 +220,11 @@ var Supporter = (function (_super) {
         this.observers.push(o);
     };
     Supporter.prototype.unsubscribe = function (o) {
+        for (var i = 0; i < this.observers.length; i++) {
+            if (this.observers[i] == o) {
+                this.observers.splice(i, 1);
+            }
+        }
     };
     Supporter.prototype.update = function () {
         this.ammoImage();

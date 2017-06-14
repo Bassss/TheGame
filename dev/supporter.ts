@@ -75,7 +75,11 @@ class Supporter extends GameObject implements Subject {
 
     }
     public unsubscribe(o: Observer) {
-
+        for(var i = 0; i < this.observers.length; i++){
+            if(this.observers[i] == o){
+                this.observers.splice(i, 1);
+            }
+        }
     }
 
 

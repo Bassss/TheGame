@@ -1,5 +1,5 @@
 class MovingPolice implements PoliceBehavior {
-    policeman: any;
+    policeman: Policeman;
 
     constructor(p: Policeman) {
         this.policeman = p;
